@@ -63,18 +63,36 @@ This is how the game uses networking, the camera, and rules to work together.
 
 ---
 
-## How to Play 
+## How to Play
+
 ### On the Server Computer
 ```bash
 python server.py
 ```
-- It’ll ask for an IP and port. Press Enter to use your computer’s IP and port 1401.
+It’ll ask for an IP and port. Press Enter to use your computer’s IP and port `1401`.
 
-### On Your Computer
+### On Player Computers
 ```bash
 python client.py
 ```
-- A window will open. Type the server’s IP, port (1401), and your username. Press Enter to start.
+A window will open. Type the server’s IP, port (`1401`), and your username. Press Enter to start.
+
+### Connecting Players Using a Hotspot
+If you want to play with friends on different devices in the same place, a hotspot works great. Here’s how to set it up:
+
+1. **Set Up a Hotspot**  
+   Use the server device (like a laptop) to create a hotspot. Have all other devices (like phones or laptops) connect to this hotspot so everyone’s on the same network.
+
+2. **Run the Server**  
+   Start `server.py` on the server device. It’ll show an IP address, like `192.168.0.202:1401`.
+
+3. **Join with Clients**  
+   On each player’s device, run `client.py`. Enter the server’s IP (like `192.168.0.202`) and port (`1401`), then add your username. Everyone will connect and can play together.
+
+#### Things to Watch Out For:
+- Make sure the hotspot stays stable—sometimes it can drop if too many devices join.
+- If the server’s IP changes (like if the hotspot restarts), check the new IP and update the clients.
+
 
 ### What the Server Shows
 ```
