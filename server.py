@@ -7,11 +7,9 @@ import logging
 import pygame
 from typing import List, Dict, Tuple
 
-# Setup logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# Pygame setup for UI
 pygame.init()
 UI_WIDTH, UI_HEIGHT = 600, 400
 UI_SCREEN = pygame.display.set_mode((UI_WIDTH, UI_HEIGHT))
@@ -22,7 +20,6 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GRAY = (150, 150, 150)
 
-# Game constants
 WIDTH, HEIGHT = 1080, 720
 GAME_DURATION = 300
 BUFFER_SIZE = 4096
@@ -37,8 +34,8 @@ class Player:
         self.size = 20
         self.score = 0
         self.sensitivity = 1.5
-        self.last_dx = 0  # Last direction in x
-        self.last_dy = 0  # Last direction in y
+        self.last_dx = 0 
+        self.last_dy = 0 
 
     def move(self, mx: float, my: float) -> None:
         dx = mx - self.x
@@ -55,18 +52,15 @@ class Player:
 
         speed *= speed_boost
 
-        # If mouse hasn't moved (dist == 0), use the last direction
         if dist > 0:
-            self.last_dx = dx / dist  # Normalize direction
+            self.last_dx = dx / dist  
             self.last_dy = dy / dist
             self.x += (dx / dist) * speed * (1/60)
             self.y += (dy / dist) * speed * (1/60)
         elif self.last_dx != 0 or self.last_dy != 0:
-            # Continue moving in the last direction
             self.x += self.last_dx * speed * (1/60)
             self.y += self.last_dy * speed * (1/60)
 
-        # Clamp position to map boundaries
         self.x = max(self.size * 0.5, min(WIDTH - self.size * 0.5, self.x))
         self.y = max(self.size * 0.5, min(HEIGHT - self.size * 0.5, self.y))
         logger.debug(f"Player {self.pid} moved to ({self.x:.1f}, {self.y:.1f})")
