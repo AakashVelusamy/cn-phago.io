@@ -6,16 +6,13 @@ import logging
 import os
 from typing import Optional, Tuple
 
-# Setup logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# Pygame setup
 pygame.init()
-# Center the window
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 UI_WIDTH, UI_HEIGHT = 600, 400
-GAME_WIDTH, GAME_HEIGHT = 960, 720  # Updated to 4:3 ratio (960/720 = 4/3)
+GAME_WIDTH, GAME_HEIGHT = 960, 720  
 MAP_WIDTH, MAP_HEIGHT = 1080, 720
 FPS = 60
 WHITE = (255, 255, 255)
@@ -31,7 +28,6 @@ SMALL_FONT = pygame.font.SysFont('Arial', 20, bold=True)
 WINNER_FONT = pygame.font.SysFont('Arial', 40, bold=True)
 GRAY = (150, 150, 150)
 
-# Minimap constants
 MINIMAP_WIDTH = 200
 MINIMAP_HEIGHT = 150
 MINIMAP_SCALE_X = MINIMAP_WIDTH / MAP_WIDTH
